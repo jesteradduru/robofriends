@@ -2,13 +2,10 @@ import React from "react";
 import Card from "./Card";
 const CardList = ({ robots }) => {
   const cardComponent = robots.map((user) => {
-    // if (true) {
-    //   throw new Error("oooopss");
-    // }
     return (
       <Card key={user.id} name={user.name} email={user.email} id={user.id} />
     );
   });
-  return <div>{cardComponent}</div>;
+  return <div className="card-columns">{cardComponent}</div>;
 };
 export default CardList;

@@ -6,10 +6,8 @@ const Scroll = ({ children }) => {
       style={{
         overflowY: "auto",
         height: "80vh",
-        marginTop: "20px",
-        border: "5px solid rgb(229, 255, 229)",
-        padding: "20px 0 20px 0",
       }}
+      className="p-5"
     >
       {children}
     </div>
