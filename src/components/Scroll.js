@@ -7,7 +7,6 @@ const Scroll = ({ children }) => {
         overflowY: "auto",
         height: "80vh",
       }}
-      className="p-5"
     >
       {children}
     </div>

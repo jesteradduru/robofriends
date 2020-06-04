@@ -29,12 +29,12 @@ class App extends React.Component {
     });
 
     return !robots.length ? (
-      <h1 className="text-center">Loading</h1>
+      <h1 className="text-center logo mt-5">Loading...</h1>
     ) : (
       <div className="container mt-4">
         <div className="row">
           <div className="col-12">
-            <h1 className="logo text-center display-3">RoboFriends</h1>
+            <h1 className="logo text-center">RoboFriends</h1>
           </div>
           <div className="offset-md-4 col-md-4 col-10 offset-1">
             <SearchBox searchChange={this.onSearchChange} />

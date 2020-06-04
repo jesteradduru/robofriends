@@ -6,6 +6,6 @@ const CardList = ({ robots }) => {
       <Card key={user.id} name={user.name} email={user.email} id={user.id} />
     );
   });
-  return <div className="card-columns">{cardComponent}</div>;
+  return <div className="row p-3">{cardComponent}</div>;
 };
 export default CardList;

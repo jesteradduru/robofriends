@@ -4,7 +4,6 @@
 }
 .logo {
   font-family: "SEGA LOGO FONT";
-  font-size: 3em;
   color: white;
 }
 
@@ -13,13 +12,21 @@
     no-repeat;
 }
 
-.card {
-  transition: all 0.5s ease;
-  cursor: pointer;
+.card-columns {
+  display: flex;
 }
+.card {
+  width: 90%;
+}
+@media (min-width: 900px) {
+  .card {
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
 
-.card:hover {
-  transform: scale(1.06);
-  z-index: 1;
-  box-shadow: 3px 5px 40px rgba(0, 0, 0, 0.6);
+  .card:hover {
+    transform: scale(1.06);
+    z-index: 1;
+    box-shadow: 3px 5px 40px rgba(0, 0, 0, 0.6);
+  }
 }
