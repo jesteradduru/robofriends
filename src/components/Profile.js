@@ -39,8 +39,11 @@ const Profile = ({ userid, robots, viewCardlists }) => {
               {website}
             </li>
           </ul>
-          <div className=" d-block ml-auto ">
-            <button onClick={viewCardlists} className="btn btn-warning px-3">
+          <div className="d-block ml-auto">
+            <button
+              onClick={viewCardlists}
+              className="btn btn-warning btn-sm px-3 mt-3"
+            >
               Back
             </button>
           </div>

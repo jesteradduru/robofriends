@@ -52,7 +52,10 @@ class App extends React.Component {
               <h1 className="logo text-center">RoboFriends</h1>
             </div>
             <div className="offset-md-4 col-md-4 col-10 offset-1">
-              <SearchBox searchChange={onSearchChange} />
+              <SearchBox
+                searchChange={onSearchChange}
+                searchValue={searchValue}
+              />
             </div>
           </div>
           <Scroll>
