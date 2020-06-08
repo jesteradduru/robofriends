@@ -21,7 +21,7 @@ const Profile = ({ userid, robots, viewCardlists }) => {
           </div>
         </div>
         {/* col */}
-        <div className="col-12 col-sm-8 bg-info border shadow d-flex p-5">
+        <div className="col-12 col-sm-8 d-flex p-5 ">
           <ul
             className="list-unstyled text-light d-flex flex-column justify-content-center h-100"
             style={{ fontSize: "1.5em" }}
