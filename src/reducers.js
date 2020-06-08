@@ -3,16 +3,23 @@ import {
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_SUCCESS,
   REQUEST_ROBOTS_FAILED,
+  CHANGE_ACTIVE_PAGE,
+  VIEW_PROFILE,
 } from "./constants";
 
 const initialState = {
   searchValue: "",
+  activePage: "cardlists",
 };
 
 const initialStateRobots = {
   isPending: false,
   error: "",
   robots: [],
+};
+
+const initialStateViewProfile = {
+  id: 0,
 };
 
 export const searchRobots = (state = initialState, action = {}) => {
@@ -42,6 +49,24 @@ export const requestRobots = (state = initialStateRobots, action = {}) => {
         isPending: false,
         error: action.payload,
       });
+    default:
+      return state;
+  }
+};
+
+export const changeActivePage = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case CHANGE_ACTIVE_PAGE:
+      return Object.assign({}, state, { activePage: action.payload });
+    default:
+      return state;
+  }
+};
+
+export const viewProfile = (state = initialStateViewProfile, action = {}) => {
+  switch (action.type) {
+    case VIEW_PROFILE:
+      return Object.assign({}, state, { id: action.payload });
     default:
       return state;
   }
