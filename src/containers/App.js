@@ -4,26 +4,28 @@ import CardList from "../components/CardList";
 import SearchBox from "../components/Searchbox";
 import Scroll from "../components/Scroll";
 import "./App.css";
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      robots: [],
-      searchValue: "",
-    };
-  }
-  onSearchChange = (event) => {
-    this.setState({ searchValue: event.target.value });
+import { connect } from "react-redux";
+import { setSearchField, requestRobots } from "../actions";
+
+const mapStateToProps = (state) => {
+  return {
+    searchValue: state.searchRobots.searchValue,
+    isPending: state.requestRobots.isPending,
+    error: state.requestRobots.error,
+    robots: state.requestRobots.robots,
   };
+};
 
-  async componentDidMount() {
-    const data = await fetch("https://jsonplaceholder.typicode.com/users");
-    const robots = await data.json();
-    this.setState({ robots: robots });
-  }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestRobots: dispatch(requestRobots()),
+  };
+};
 
+class App extends React.Component {
   render() {
-    const { searchValue, robots } = this.state;
+    const { searchValue, onSearchChange, robots } = this.props;
     const filteredRobots = robots.filter((robot) => {
       return robot.name.toLowerCase().includes(searchValue.toLowerCase());
     });
@@ -37,7 +39,7 @@ class App extends React.Component {
             <h1 className="logo text-center">RoboFriends</h1>
           </div>
           <div className="offset-md-4 col-md-4 col-10 offset-1">
-            <SearchBox searchChange={this.onSearchChange} />
+            <SearchBox searchChange={onSearchChange} />
           </div>
         </div>
         <Scroll>
@@ -50,4 +52,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
