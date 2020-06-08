@@ -7,7 +7,7 @@ const Profile = ({ userid, robots, viewCardlists }) => {
   return (
     <div className="container">
       <div className="row mt-5">
-        <div className="col col-sm-4">
+        <div className="col-12 col-sm-4">
           <div className="card bg-info border border-light shadow text-center h-100 mx-auto">
             <img
               src={`https://robohash.org/${id}>200x200`}
@@ -15,13 +15,13 @@ const Profile = ({ userid, robots, viewCardlists }) => {
               className="img-fluid"
             />
             <div className="card-body">
-              <h5>{name}</h5>
+              <h2>{name}</h2>
               <p>{email}</p>
             </div>
           </div>
         </div>
         {/* col */}
-        <div className="col col-sm-4">
+        <div className="col-12 col-sm-8 bg-info border shadow d-flex p-5">
           <ul
             className="list-unstyled text-light d-flex flex-column justify-content-center h-100"
             style={{ fontSize: "1.5em" }}
@@ -39,14 +39,11 @@ const Profile = ({ userid, robots, viewCardlists }) => {
               {website}
             </li>
           </ul>
-        </div>
-        <div className="col col-sm-4">
-          <button
-            onClick={viewCardlists}
-            className="btn btn-dark d-block ml-auto"
-          >
-            Back
-          </button>
+          <div className=" d-block ml-auto ">
+            <button onClick={viewCardlists} className="btn btn-warning px-3">
+              Back
+            </button>
+          </div>
         </div>
       </div>
       {/* row */}

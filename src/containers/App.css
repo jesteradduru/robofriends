@@ -8,10 +8,8 @@
 }
 
 .gradient-bg {
-  background: linear-gradient(to right, rgb(54, 184, 201), rgb(5, 96, 153))
-    no-repeat;
+  background: linear-gradient(to right, rgb(33, 137, 228), rgb(49, 158, 242));
 }
-
 .card-columns {
   display: flex;
 }
