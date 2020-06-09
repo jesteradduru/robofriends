@@ -16,6 +16,7 @@
 .card {
   width: 90%;
 }
+
 @media (min-width: 900px) {
   .card {
     transition: all 0.5s ease;
@@ -26,5 +27,10 @@
     transform: scale(1.06);
     z-index: 1;
     box-shadow: 3px 5px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .disable-transition {
+    transition: none;
+    pointer-events: none;
   }
 }

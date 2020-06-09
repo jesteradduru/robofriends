@@ -6,14 +6,15 @@ import Profile from "../components/Profile";
 import Scroll from "../components/Scroll";
 import "./App.css";
 import { connect } from "react-redux";
-import { setSearchField, requestRobots, changeActivePage } from "../actions";
+import { setSearchField, requestApi, changeActivePage } from "../actions";
 
 const mapStateToProps = (state) => {
   return {
     searchValue: state.searchRobots.searchValue,
-    isPending: state.requestRobots.isPending,
-    error: state.requestRobots.error,
-    robots: state.requestRobots.robots,
+    isPending: state.requestApi.isPending,
+    error: state.requestApi.error,
+    robots: state.requestApi.robots,
+    posts: state.requestApi.posts,
     activePage: state.changeActivePage.activePage,
     profileId: state.viewProfile.id,
   };
@@ -22,12 +23,18 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-    onRequestRobots: dispatch(requestRobots()),
+    onRequestRobots: () =>
+      dispatch(
+        requestApi("https://jsonplaceholder.typicode.com/users", "robots")
+      ),
     onViewCardlists: (event) => dispatch(changeActivePage("cardlists")),
   };
 };
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.onRequestRobots();
+  }
   render() {
     const {
       searchValue,
@@ -36,13 +43,14 @@ class App extends React.Component {
       activePage,
       profileId,
       onViewCardlists,
+      posts,
     } = this.props;
-    const filteredRobots = robots.filter((robot) => {
-      return robot.name.toLowerCase().includes(searchValue.toLowerCase());
-    });
 
     if (activePage === "cardlists") {
       // cardlists
+      const filteredRobots = robots.filter((robot) => {
+        return robot.name.toLowerCase().includes(searchValue.toLowerCase());
+      });
       return !robots.length ? (
         <h1 className="text-center logo mt-5">Loading...</h1>
       ) : (
@@ -71,6 +79,7 @@ class App extends React.Component {
           userid={profileId}
           robots={robots}
           viewCardlists={onViewCardlists}
+          posts={posts}
         />
       );
     }

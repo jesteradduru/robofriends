@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import { connect } from "react-redux";
-import { changeActivePage, viewProfile } from "../actions";
+import { changeActivePage, viewProfile, requestApi } from "../actions";
 const mapStateToProps = (state) => {
   return {
     activePage: state.changeActivePage.activePage,
@@ -11,8 +11,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onViewProfile: (event) => {
+      const id = event.target.getAttribute("id");
       dispatch(changeActivePage("profile"));
-      dispatch(viewProfile(event.target.getAttribute("id")));
+      dispatch(viewProfile(id));
+      dispatch(
+        requestApi(
+          `http://jsonplaceholder.typicode.com/posts?userId=${id}`,
+          "posts"
+        )
+      );
     },
   };
 };

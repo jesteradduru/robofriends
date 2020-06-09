@@ -1,8 +1,8 @@
 import {
   CHANGE_SEARCH_VALUE,
-  REQUEST_ROBOTS_PENDING,
-  REQUEST_ROBOTS_SUCCESS,
-  REQUEST_ROBOTS_FAILED,
+  REQUEST_API_PENDING,
+  REQUEST_API_SUCCESS,
+  REQUEST_API_FAILED,
   VIEW_PROFILE,
   CHANGE_ACTIVE_PAGE,
 } from "./constants";
@@ -12,14 +12,14 @@ export const setSearchField = (text) => ({
   payload: text,
 });
 
-export const requestRobots = () => (dispatch) => {
-  dispatch({ type: REQUEST_ROBOTS_PENDING });
-  fetch("https://jsonplaceholder.typicode.com/users")
+export const requestApi = (url, state) => (dispatch) => {
+  dispatch({ type: REQUEST_API_PENDING });
+  fetch(url)
     .then((response) => response.json())
-    .then((data) => dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data }))
-    .catch((error) =>
-      dispatch({ type: REQUEST_ROBOTS_FAILED, payload: error })
-    );
+    .then((data) =>
+      dispatch({ type: REQUEST_API_SUCCESS, payload: data, state })
+    )
+    .catch((error) => dispatch({ type: REQUEST_API_FAILED, payload: error }));
 };
 
 export const changeActivePage = (page) => ({

@@ -10,7 +10,7 @@ import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
 import {
   searchRobots,
-  requestRobots,
+  requestApi,
   changeActivePage,
   viewProfile,
 } from "./reducers";
@@ -18,9 +18,9 @@ import {
 const logger = createLogger();
 const rootReducer = combineReducers({
   searchRobots,
-  requestRobots,
   changeActivePage,
   viewProfile,
+  requestApi,
 });
 const store = createStore(
   rootReducer,
