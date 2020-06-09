@@ -10,13 +10,7 @@ class Profile extends React.Component {
     return (
       <div className="container">
         <div className="row mt-5">
-          <div className="col-12 col-sm-4">
-            <button
-              onClick={viewCardlists}
-              className="btn btn-dark btn-sm px-4 mb-4 ml-4 mt-3 border"
-            >
-              Back
-            </button>
+          <div className="col-12 col-lg-4">
             <div className="card bg-info border border-light shadow text-center mx-auto disable-transition">
               <img
                 src={`https://robohash.org/${id}>200x200`}
@@ -49,9 +43,15 @@ class Profile extends React.Component {
                 </ul>
               </div>
             </div>
+            <button
+              onClick={viewCardlists}
+              className="btn btn-dark btn-block w-75 mx-auto border mt-3"
+            >
+              Back
+            </button>
           </div>
           {/* col */}
-          <div className="col-12 col-sm-8">
+          <div className="col-12 col-lg-8">
             <Posts posts={posts} />
           </div>
         </div>

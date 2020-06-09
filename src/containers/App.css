@@ -17,6 +17,21 @@
   width: 90%;
 }
 
+.loading {
+  animation-name: loading;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media (min-width: 900px) {
   .card {
     transition: all 0.5s ease;

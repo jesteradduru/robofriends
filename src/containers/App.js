@@ -51,8 +51,18 @@ class App extends React.Component {
       const filteredRobots = robots.filter((robot) => {
         return robot.name.toLowerCase().includes(searchValue.toLowerCase());
       });
-      return !robots.length ? (
-        <h1 className="text-center logo mt-5">Loading...</h1>
+      return robots.length === 0 ? (
+        <div
+          style={{
+            height: "70vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h1 className="text-center logo mt-5 loading">Loading...</h1>
+        </div>
       ) : (
         <div className="container mt-4">
           <div className="row">
@@ -66,7 +76,7 @@ class App extends React.Component {
               />
             </div>
           </div>
-          <Scroll>
+          <Scroll viewHeight="80vh">
             <ErrorBoundry>
               <CardList robots={filteredRobots} />
             </ErrorBoundry>
