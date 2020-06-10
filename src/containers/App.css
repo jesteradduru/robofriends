@@ -8,16 +8,34 @@
 }
 
 .gradient-bg {
-  background: linear-gradient(to right, rgb(54, 184, 201), rgb(5, 96, 153))
-    no-repeat;
+  background: linear-gradient(to right, rgb(33, 137, 228), rgb(49, 158, 242));
 }
-
 .card-columns {
   display: flex;
 }
 .card {
   width: 90%;
 }
+
+.mt-sm-5 {
+  margin-top: 5vh;
+}
+
+.loading {
+  animation-name: loading;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media (min-width: 900px) {
   .card {
     transition: all 0.5s ease;
@@ -28,5 +46,14 @@
     transform: scale(1.06);
     z-index: 1;
     box-shadow: 3px 5px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .disable-transition {
+    transition: none;
+    pointer-events: none;
+  }
+
+  .mt-sm-5 {
+    margin-top: 0 !important;
   }
 }
