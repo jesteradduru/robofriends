@@ -27,7 +27,7 @@ const Posts = ({ userid, posts }) => {
     </div>
   ) : (
     <div className="">
-      <h1 className="logo border-bottom pb-4 text-center">Posts</h1>
+      <h1 className="logo border-bottom pb-4 text-center mt-sm-5">Posts</h1>
       <br />
       <Scroll viewHeight="80vh">{userPosts}</Scroll>
     </div>

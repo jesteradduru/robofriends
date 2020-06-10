@@ -17,6 +17,10 @@
   width: 90%;
 }
 
+.mt-sm-5 {
+  margin-top: 5vh;
+}
+
 .loading {
   animation-name: loading;
   animation-duration: 1.2s;
@@ -47,5 +51,9 @@
   .disable-transition {
     transition: none;
     pointer-events: none;
+  }
+
+  .mt-sm-5 {
+    margin-top: 0 !important;
   }
 }
