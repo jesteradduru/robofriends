@@ -1,5 +1,28 @@
 import React from "react";
-const Card = ({ name, email, id, viewProfile }) => {
+import { connect } from "react-redux";
+import { changeActivePage, viewProfile, requestApi } from "../actions";
+const mapStateToProps = (state) => {
+  return {
+    activePage: state.changeActivePage.activePage,
+    viewProfile: state.viewProfile.id,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onViewProfile: (event) => {
+      const id = event.target.getAttribute("id");
+      dispatch(changeActivePage("profile"));
+      dispatch(viewProfile(id));
+      dispatch(
+        requestApi(
+          `https://jsonplaceholder.typicode.com/posts?userId=${id}`,
+          "posts"
+        )
+      );
+    },
+  };
+};
+const Card = ({ name, email, id, onViewProfile }) => {
   return (
     <div className="col-lg-4 col-sm-6 mb-5">
       <div className="card bg-info border border-light shadow text-center h-100 mx-auto">
@@ -13,7 +36,11 @@ const Card = ({ name, email, id, viewProfile }) => {
           <p>{email}</p>
         </div>
         <div className="card-footer">
-          <button className="btn btn-md btn-dark" onClick={viewProfile} id={id}>
+          <button
+            className="btn btn-md btn-dark"
+            onClick={onViewProfile}
+            id={id}
+          >
             View Profile
           </button>
         </div>
@@ -22,4 +49,4 @@ const Card = ({ name, email, id, viewProfile }) => {
   );
 };
 
-export default Card;
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

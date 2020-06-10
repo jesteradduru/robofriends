@@ -26,11 +26,10 @@ const Posts = ({ userid, posts }) => {
       <h1 className="logo loading">Loading...</h1>
     </div>
   ) : (
-    <div className="mt-5">
-      <br />
+    <div className="">
       <h1 className="logo border-bottom pb-4 text-center">Posts</h1>
       <br />
-      <Scroll viewHeight="60vh">{userPosts}</Scroll>
+      <Scroll viewHeight="80vh">{userPosts}</Scroll>
     </div>
   );
 };

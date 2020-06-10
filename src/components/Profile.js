@@ -6,7 +6,6 @@ class Profile extends React.Component {
     const { userid, robots, viewCardlists, posts } = this.props;
     const user = robots.filter((robot) => robot.id === parseInt(userid))[0];
     const { id, name, email, address, phone, website } = user;
-
     return (
       <div className="container">
         <div className="row mt-5">

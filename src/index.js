@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
+
 import {
   searchRobots,
   requestApi,
@@ -16,6 +17,7 @@ import {
 } from "./reducers";
 
 const logger = createLogger();
+
 const rootReducer = combineReducers({
   searchRobots,
   changeActivePage,
@@ -26,6 +28,7 @@ const store = createStore(
   rootReducer,
   applyMiddleware(thunkMiddleware, logger)
 );
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
